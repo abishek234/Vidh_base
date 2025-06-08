@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="img/favicon.png" type="image/png">
-        <title>Nexus SaaS</title>
+        <title>Contact - Vidhyarthika</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="vendors/linericon/style.css">
@@ -18,6 +18,8 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/responsive.css">
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+        <!-- EmailJS SDK -->
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
         <style>
             /* Enhanced Contact Form Styles */
             * {
@@ -270,6 +272,12 @@
                 transition: all 0.1s ease;
             }
             
+            .submit_btn:disabled {
+                opacity: 0.7;
+                cursor: not-allowed;
+                transform: none;
+            }
+            
             .contact_info {
                 background: linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.8) 100%);
                 backdrop-filter: blur(15px);
@@ -354,6 +362,40 @@
                 margin: 0;
                 font-size: 0.9rem;
                 line-height: 1.4;
+            }
+            
+            /* Status Messages */
+            .status-message {
+                padding: 15px 20px;
+                border-radius: 12px;
+                margin-bottom: 20px;
+                font-weight: 500;
+                text-align: center;
+                display: none;
+                animation: slideDown 0.4s ease-out;
+            }
+            
+            .status-message.success {
+                background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+                color: #155724;
+                border: 1px solid #c3e6cb;
+            }
+            
+            .status-message.error {
+                background: linear-gradient(135deg, #f8d7da 0%, #f1b0b7 100%);
+                color: #721c24;
+                border: 1px solid #f1b0b7;
+            }
+            
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
             }
             
             /* Animation Effects */
@@ -447,7 +489,7 @@
             	<nav class="navbar navbar-expand-lg navbar-light">
 					<div class="container box_1620">
 						<!-- Brand and toggle get grouped for better mobile display -->
-						<a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
+						<a class="navbar-brand logo_h" style="color: aliceblue;font-size: 25px;" href="index.html"><img src="img/Logo1.png" height="60" alt="">Vidhyarthika</a>
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
@@ -456,24 +498,26 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 							<ul class="nav navbar-nav menu_nav justify-content-center">
-								<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li> 
+								<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li> 
 								<li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li> 
-								<li class="nav-item"><a class="nav-link" href="services.html">Services</a>
+								<li class="nav-item"><a class="nav-link" href="features.html">Features</a>
 								<li class="nav-item submenu dropdown">
-									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
+									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Solutions</a>
 									<ul class="dropdown-menu">
-										<li class="nav-item"><a class="nav-link" href="price.html">Pricing</a> 
-										<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
+										<li class="nav-item"><a class="nav-link" href="admin-portal.html">Admin Portal</a> 
+										<li class="nav-item"><a class="nav-link" href="teacher-portal.html">Teacher Portal</a></li>
+										<li class="nav-item"><a class="nav-link" href="student-portal.html">Student Portal</a></li>
+										<li class="nav-item"><a class="nav-link" href="parent-portal.html">Parent Portal</a></li>
 									</ul>
 								</li> 
 								<li class="nav-item submenu dropdown">
-									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
+									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources</a>
 									<ul class="dropdown-menu">
-										<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-										<li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
+										<li class="nav-item"><a class="nav-link" href="price.html">pricing</a></li>
+										<li class="nav-item"><a class="nav-link" href="demo.html">Request Demo</a></li>
 									</ul>
 								</li> 
-								<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+								<li class="nav-item active"><a class="nav-link" href="contact.html">Contact</a></li>
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
 								<li class="nav-item"><a href="#" class="tickets_btn">Free Trial</a></li>
@@ -531,7 +575,11 @@
                                 <h3>Get In Touch</h3>
                                 <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
                             </div>
-                            <form class="contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                            
+                            <!-- Status Messages -->
+                            <div id="statusMessage" class="status-message"></div>
+                            
+                            <form class="contact_form" id="contactForm">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -548,7 +596,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label class="form-label">Contact Number <span class="required">*</span></label>
-                                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Contact Number with Country Code" required>
+                                            <input type="tel" class="form-control" id="number" name="number" placeholder="Contact Number with Country Code" required>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -564,7 +612,7 @@
                                         </div>
                                     </div>
                                     <div class="col-12 text-center">
-                                        <button type="submit" value="submit" class="btn submit_btn">
+                                        <button type="submit" class="btn submit_btn" id="submitBtn">
                                             Send Message
                                         </button>
                                     </div>
@@ -584,24 +632,22 @@
         			<div class="col-lg-5 col-sm-6">
         				<aside class="f_widget ab_widget">
         					<div class="f_title">
-        						<h3>About Nexus</h3>
+        						<h3>About Vidhyarthika</h3>
         					</div>
-        					<p>Empowering students worldwide with cutting-edge technology and personalized learning experiences. Join the future of education with Nexus Student Platform.</p>
-        					<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+        					<p>Vidhyarthika is an innovative AI-integrated student management platform designed to revolutionize school administration with cutting-edge features like voice-controlled grading, smart attendance tracking, and comprehensive offline functionality.</p>
+        					<p>Founded by Abishek, our mission is to empower educational institutions with technology that enhances learning experiences while simplifying administrative tasks.</p>
         				</aside>
         			</div>
-        			<div class="col-lg-5 col-sm-6">
+        			<div class="col-lg-4 col-sm-6">
         				<aside class="f_widget news_widget">
         					<div class="f_title">
-        						<h3>Newsletter</h3>
+        						<h3>Get Started</h3>
         					</div>
-        					<p>Stay updated with our latest educational innovations and platform updates</p>
+        					<p>Ready to transform your school management? Contact us for a free demo.</p>
         					<div id="mc_embed_signup">
-                                <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative">
+                                <form target="_blank" action="#" method="get" class="subscribe_form relative">
                                 	<div class="input-group d-flex flex-row">
-                                        <input name="EMAIL" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
+                                        <input name="EMAIL" placeholder="Enter your email for demo" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your email for demo'" required="" type="email">
                                         <button class="btn sub-btn"><span class="lnr lnr-arrow-right"></span></button>		
                                     </div>				
                                     <div class="mt-10 info"></div>
@@ -609,56 +655,28 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                             </div>
         				</aside>
         			</div>
-        			<div class="col-lg-2">
+        			<div class="col-lg-3">
         				<aside class="f_widget social_widget">
         					<div class="f_title">
-        						<h3>Follow Us</h3>
+        						<h3>Connect With Us</h3>
         					</div>
-        					<p>Connect with our community</p>
+        					<p>Follow us for updates and educational insights</p>
         					<ul class="list">
         						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
         						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
         						<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
         						<li><a href="#"><i class="fa fa-instagram"></i></a></li>
         					</ul>
+        					<div class="mt-3">
+        						<p><strong>Email:</strong> hello@vidhyarthika.com</p>
+        						<p><strong>Phone:</strong> +91-9876543210</p>
+        					</div>
         				</aside>
         			</div>
         		</div>
         	</div>
         </footer>
         <!--================End Footer Area =================-->
-        
-        <!--================Contact Success and Error message Area =================-->
-        <div id="success" class="modal modal-message fade" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <i class="fa fa-close"></i>
-                        </button>
-                        <h2>Thank you!</h2>
-                        <p>Your message has been sent successfully. We'll get back to you soon!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modals error -->
-
-        <div id="error" class="modal modal-message fade" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <i class="fa fa-close"></i>
-                        </button>
-                        <h2>Oops!</h2>
-                        <p>Something went wrong. Please try again later.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--================End Contact Success and Error message Area =================-->
         
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -672,36 +690,155 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         <script src="vendors/isotope/isotope-min.js"></script>
         <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
         <script src="js/jquery.ajaxchimp.min.js"></script>
-        <script src="js/mail-script.js"></script>
         <script src="vendors/counter-up/jquery.waypoints.min.js"></script>
         <script src="vendors/counter-up/jquery.counterup.min.js"></script>
-        <!-- contact js -->
-        <script src="js/jquery.form.js"></script>
+        <!-- jQuery Validation -->
         <script src="js/jquery.validate.min.js"></script>
-        <script src="js/contact.js"></script>
         <script src="js/theme.js"></script>
+        
         <script>
-            // Enhanced form interaction
+            // Initialize EmailJS
+            (function() {
+                emailjs.init('3MfPpBo6mNW0NHAn9'); // Replace with your EmailJS user ID
+            })();
+
             $(document).ready(function() {
-                // Form submission animation
-                $('.submit_btn').on('click', function(e) {
-                    if ($('#contactForm')[0].checkValidity()) {
-                        $(this).addClass('loading');
-                        $(this).html('<i class="fa fa-spinner fa-spin"></i> Sending...');
+                "use strict";
+
+                const statusMessage = $('#statusMessage');
+
+                // Show status message with longer display time for success
+                function showStatus(message, type) {
+                    statusMessage.removeClass('success error').addClass(type);
+                    statusMessage.text(message);
+                    statusMessage.slideDown();
+                    
+                    // Auto-hide after 8 seconds for success, 5 seconds for error
+                    const hideTime = type === 'success' ? 8000 : 5000;
+                    setTimeout(function() {
+                        statusMessage.slideUp();
+                    }, hideTime);
+                }
+
+                // Add custom validation method if needed
+                jQuery.validator.addMethod('answercheck', function (value, element) {
+                    return this.optional(element) || /^\bcat\b$/.test(value)
+                }, "type the correct answer -_-");
+
+                // Initialize form validation with EmailJS integration
+                $('#contactForm').validate({
+                    rules: {
+                        name: {
+                            required: true,
+                            minlength: 2
+                        },
+                        subject: {
+                            required: true,
+                            minlength: 4
+                        },
+                        number: {
+                            required: true,
+                            minlength: 5
+                        },
+                        email: {
+                            required: true,
+                            email: true
+                        },
+                        message: {
+                            required: true,
+                            minlength: 20
+                        }
+                    },
+                    messages: {
+                        name: {
+                            required: "come on, you have a name, don't you?",
+                            minlength: "your name must consist of at least 2 characters"
+                        },
+                        subject: {
+                            required: "come on, you have a subject, don't you?",
+                            minlength: "your subject must consist of at least 4 characters"
+                        },
+                        number: {
+                            required: "come on, you have a number, don't you?",
+                            minlength: "your Number must consist of at least 5 characters"
+                        },
+                        email: {
+                            required: "no email, no message"
+                        },
+                        message: {
+                            required: "um...yea, you have to write something to send this form.",
+                            minlength: "thats all? really?"
+                        }
+                    },
+                    submitHandler: function(form) {
+                        const submitBtn = $('#submitBtn');
+                        
+                        // Disable submit button and show loading
+                        submitBtn.prop('disabled', true);
+                        submitBtn.html('<i class="fa fa-spinner fa-spin"></i> Sending...');
+                        
+                        // Hide any previous status messages
+                        statusMessage.slideUp();
+
+                        // Prepare template parameters
+                        const templateParams = {
+                            from_name: $('#name').val(),
+                            from_email: $('#email').val(),
+                            phone: $('#number').val(),
+                            subject: $('#subject').val(),
+                            message: $('#message').val(),
+                            to_email: 'abishekriya0108@gmail.com' // Your receiving email
+                        };
+
+                        // Send email using EmailJS
+                        emailjs.send('service_qmbt1bl', 'template_a42qwgh', templateParams)
+                            .then(function(response) {
+                                console.log('SUCCESS!', response.status, response.text);
+                                
+                                // Disable form and show success
+                                $('#contactForm :input').attr('disabled', 'disabled');
+                                $('#contactForm').fadeTo("slow", 1, function() {
+                                    $(this).find(':input').attr('disabled', 'disabled');
+                                    $(this).find('label').css('cursor','default');
+                                    showStatus('Thank you! Your message has been sent successfully. We\'ll get back to you soon!', 'success');
+                                });
+                            })
+                            .catch(function(error) {
+                                console.log('FAILED...', error);
+                                
+                                // Show error message without disabling form
+                                showStatus('Oops! Something went wrong. Please try again later or contact us directly.', 'error');
+                            })
+                            .finally(function() {
+                                // Re-enable submit button
+                                submitBtn.prop('disabled', false);
+                                submitBtn.html('Send Message');
+                            });
                     }
                 });
-                
-                // Basic form validation styling
+
+                // Enhanced form styling interactions
                 $('.form-control').on('blur', function() {
-                    if ($(this).is(':invalid') && $(this).val()) {
+                    if ($(this).hasClass('error')) {
                         $(this).addClass('is-invalid');
                     } else {
                         $(this).removeClass('is-invalid');
                     }
                 });
                 
-                $('.form-control').on('input', function() {
+                $('.form-control').on('input focus', function() {
                     $(this).removeClass('is-invalid');
+                });
+
+                // Enhanced submit button interactions
+                $('.submit_btn').on('mouseenter', function() {
+                    if (!$(this).prop('disabled')) {
+                        $(this).addClass('hover-effect');
+                    }
+                });
+
+                $('.submit_btn').on('mouseleave', function() {
+                    $(this).removeClass('hover-effect');
                 });
             });
         </script>

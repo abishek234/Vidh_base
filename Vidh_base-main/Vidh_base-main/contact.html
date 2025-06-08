@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="img/favicon.png" type="image/png">
+        <title>Nexus SaaS</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="vendors/linericon/style.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
+        <link rel="stylesheet" href="vendors/lightbox/simpleLightbox.css">
+        <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">
+        <link rel="stylesheet" href="vendors/animate-css/animate.css">
+        <!-- main css -->
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/responsive.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+        <style>
+            /* Enhanced Contact Form Styles */
+            * {
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            }
+            
+            .contact_area {
+                background: linear-gradient(135deg, #f8f9fa 0%, #e3f2fd 100%);
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .contact_area::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(74, 144, 226, 0.1) 0%, transparent 70%);
+                animation: float 20s ease-in-out infinite;
+            }
+            
+            @keyframes float {
+                0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
+                33% { transform: translate(30px, -30px) rotate(120deg); }
+                66% { transform: translate(-20px, 20px) rotate(240deg); }
+            }
+            
+            .contact_form_container {
+                background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+                backdrop-filter: blur(25px);
+                border-radius: 25px;
+                padding: 50px 40px;
+                box-shadow: 
+                    0 20px 60px rgba(0, 0, 0, 0.1),
+                    0 8px 16px rgba(0, 0, 0, 0.06),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+                border: 1px solid rgba(255, 255, 255, 0.4);
+                position: relative;
+                overflow: hidden;
+                transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            
+            .contact_form_container:hover {
+                transform: translateY(-6px);
+                box-shadow: 
+                    0 30px 80px rgba(0, 0, 0, 0.15),
+                    0 12px 24px rgba(0, 0, 0, 0.08),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            }
+            
+            .contact_form_container::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 5px;
+                background: linear-gradient(90deg, #4a90e2, #7b68ee, #50c878, #f093fb);
+                background-size: 300% 100%;
+                animation: gradientShift 4s ease infinite;
+            }
+            
+            .contact_form_container::after {
+                content: '';
+                position: absolute;
+                top: 8px;
+                left: 8px;
+                right: 8px;
+                bottom: 8px;
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+                border-radius: 20px;
+                pointer-events: none;
+                z-index: 1;
+            }
+            
+            @keyframes gradientShift {
+                0%, 100% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+            }
+            
+            .contact_form_title {
+                text-align: center;
+                margin-bottom: 45px;
+                position: relative;
+                z-index: 2;
+            }
+            
+            .contact_form_title h3 {
+                color: #2d3748;
+                font-weight: 800;
+                margin-bottom: 18px;
+                font-size: 2.2rem;
+                letter-spacing: -0.02em;
+                background: linear-gradient(135deg, #4a90e2 0%, #7b68ee 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                position: relative;
+            }
+            
+            .contact_form_title h3::after {
+                content: '';
+                position: absolute;
+                bottom: -8px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 50px;
+                height: 3px;
+                background: linear-gradient(90deg, #4a90e2, #7b68ee);
+                border-radius: 2px;
+            }
+            
+            .contact_form_title p {
+                color: #718096;
+                font-size: 1.15rem;
+                margin: 0;
+                max-width: 480px;
+                margin: 0 auto;
+                line-height: 1.6;
+                font-weight: 400;
+            }
+            
+            .form-group {
+                position: relative;
+                margin-bottom: 30px;
+                z-index: 2;
+            }
+            
+            .form-label {
+                display: block;
+                color: #2d3748;
+                font-size: 16px;
+                font-weight: 600;
+                margin-bottom: 8px;
+                position: relative;
+            }
+            
+            .form-label .required {
+                color: #e53e3e;
+                margin-left: 2px;
+            }
+            
+            .form-control {
+                background: #f7fafc;
+                border: 2px solid #e2e8f0;
+                border-radius: 12px;
+                padding: 16px 18px;
+                font-size: 16px;
+                font-weight: 400;
+                color: #2d3748;
+                transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+                width: 100%;
+                position: relative;
+            }
+            
+            .form-control:focus {
+                background: #ffffff;
+                border-color: #4a90e2;
+                box-shadow: 
+                    0 0 0 0.2rem rgba(74, 144, 226, 0.1),
+                    0 4px 12px rgba(74, 144, 226, 0.08);
+                outline: none;
+            }
+            
+            .form-control::placeholder {
+                color: #a0aec0;
+                font-weight: 400;
+            }
+            
+            .form-control.is-invalid {
+                border-color: #e53e3e;
+                box-shadow: 0 0 0 0.2rem rgba(229, 62, 62, 0.1);
+            }
+            
+            textarea.form-control {
+                resize: vertical;
+                min-height: 120px;
+            }
+            
+            .submit_btn {
+                background: linear-gradient(135deg, 
+                #3bacf0 0%, #3bacf0 100%);
+                border: none;
+                padding: 14px 35px;
+                border-radius: 25px;
+                color: white;
+                font-weight: 600;
+                font-size: 15px;
+                transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                box-shadow: 
+                    0 8px 20px rgba(74, 144, 226, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+                position: relative;
+                overflow: hidden;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                width: auto;
+                display: inline-block;
+                border: 2px solid transparent;
+                margin-top: 20px;
+                z-index: 2;
+            }
+            
+            .submit_btn::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+                transition: left 0.5s ease;
+            }
+            
+            .submit_btn::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 0;
+                height: 0;
+                background: rgba(255, 255, 255, 0.15);
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                transition: all 0.5s ease;
+            }
+            
+            .submit_btn:hover::before {
+                left: 100%;
+            }
+            
+            .submit_btn:hover::after {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .submit_btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 
+                    0 12px 25px rgba(74, 144, 226, 0.4),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+                background: linear-gradient(135deg, #5a9ff2 0%, #8b78fe 100%);
+            }
+            
+            .submit_btn:active {
+                transform: translateY(-1px);
+                transition: all 0.1s ease;
+            }
+            
+            .contact_info {
+                background: linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.8) 100%);
+                backdrop-filter: blur(15px);
+                border-radius: 20px;
+                padding: 35px 30px;
+                box-shadow: 
+                    0 15px 40px rgba(0, 0, 0, 0.08),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+                border: 1px solid rgba(255, 255, 255, 0.4);
+                height: fit-content;
+                position: sticky;
+                top: 30px;
+            }
+            
+            .info_item {
+                display: flex;
+                align-items: flex-start;
+                gap: 16px;
+                padding: 40px 20px;
+                margin-bottom: 20px;
+                background: rgba(255, 255, 255, 0.9);
+                border-radius: 16px;
+                border-bottom: none;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            }
+            
+            .info_item:last-child {
+                margin-bottom: 0;
+            }
+            
+            .info_item:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px rgba(74, 144, 226, 0.15);
+            }
+            
+            .info_item i {
+                flex-shrink: 0;
+                width: 48px;
+                height: 48px;
+                background: linear-gradient(135deg, #4a90e2 0%, #262045 100%);
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+                font-size: 20px;
+                color: white;
+                box-shadow: 0 4px 12px rgb(255, 255, 255);
+            }
+            
+            .info_item:hover i {
+                transform: scale(1.05);
+                box-shadow: 0 8px 20px rgb(255, 255, 255);
+            }
+            
+            .info_item .content_wrapper {
+                flex: 1;
+                min-width: 0;
+            }
+            
+            .info_item h6 {
+                color: #2d3748;
+                font-weight: 600;
+                font-size: 1.1rem;
+                margin-bottom: 4px;
+                line-height: 1.4;
+            }
+            
+            .info_item h6 a {
+                color: inherit;
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+            
+            .info_item h6 a:hover {
+                color: #4a90e2;
+            }
+            
+            .info_item p {
+                color: #718096;
+                margin: 0;
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+            
+            /* Animation Effects */
+            .contact_form_container {
+                animation: slideUp 0.8s ease-out;
+            }
+            
+            @keyframes slideUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            .info_item {
+                animation: fadeInLeft 0.6s ease-out backwards;
+            }
+            
+            .info_item:nth-child(1) { animation-delay: 0.1s; }
+            .info_item:nth-child(2) { animation-delay: 0.2s; }
+            
+            @keyframes fadeInLeft {
+                from {
+                    opacity: 0;
+                    transform: translateX(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+            
+            .form-group {
+                animation: fadeInUp 0.6s ease-out backwards;
+            }
+            
+            .form-group:nth-child(1) { animation-delay: 0.2s; }
+            .form-group:nth-child(2) { animation-delay: 0.3s; }
+            .form-group:nth-child(3) { animation-delay: 0.4s; }
+            .form-group:nth-child(4) { animation-delay: 0.5s; }
+            .form-group:nth-child(5) { animation-delay: 0.6s; }
+            
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            /* Responsive Design */
+            @media (max-width: 768px) {
+                .contact_form_container {
+                    padding: 35px 25px;
+                    margin-bottom: 30px;
+                }
+                
+                .contact_form_title h3 {
+                    font-size: 1.8rem;
+                }
+                
+                .contact_info {
+                    margin-bottom: 30px;
+                    position: static;
+                }
+                
+                .info_item {
+                    padding: 20px 15px;
+                }
+                
+                .info_item i {
+                    width: 40px;
+                    height: 40px;
+                    font-size: 18px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        
+        <!--================Header Menu Area =================-->
+        <header class="header_area">
+            <div class="main_menu">
+            	<nav class="navbar navbar-expand-lg navbar-light">
+					<div class="container box_1620">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+							<ul class="nav navbar-nav menu_nav justify-content-center">
+								<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li> 
+								<li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li> 
+								<li class="nav-item"><a class="nav-link" href="services.html">Services</a>
+								<li class="nav-item submenu dropdown">
+									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
+									<ul class="dropdown-menu">
+										<li class="nav-item"><a class="nav-link" href="price.html">Pricing</a> 
+										<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
+									</ul>
+								</li> 
+								<li class="nav-item submenu dropdown">
+									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
+									<ul class="dropdown-menu">
+										<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+										<li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
+									</ul>
+								</li> 
+								<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+							</ul>
+							<ul class="nav navbar-nav navbar-right">
+								<li class="nav-item"><a href="#" class="tickets_btn">Free Trial</a></li>
+							</ul>
+						</div> 
+					</div>
+            	</nav>
+            </div>
+        </header>
+        <!--================Header Menu Area =================-->
+        
+        <!--================Home Banner Area =================-->
+        <section class="banner_area">
+            <div class="banner_inner d-flex align-items-center">
+            	<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+				<div class="container">
+					<div class="banner_content text-center">
+						<h2>CONTACT US</h2>
+						<div class="page_link">
+							<a href="index.html">Home</a>
+							<a href="contact.html">CONTACT</a>
+						</div>
+						
+					</div>
+				</div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+        
+        <!--================Contact Area =================-->
+        <section class="contact_area p_120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="contact_info">
+                            <div class="info_item">
+                                <i class="lnr lnr-phone-handset"></i>
+                                <div class="content_wrapper">
+                                    <h6><a href="tel:+91 7708154360">+91 7708154360</a></h6>
+                                    <p>Mon to Fri 9am to 6 pm</p>
+                                </div>
+                            </div>
+                            <div class="info_item">
+                                <i class="lnr lnr-envelope"></i>
+                                <div class="content_wrapper">
+                                    <h6><a href="mailto:abishek@vidhyarthika.in">abishek@vidhyarthika.in</a></h6>
+                                    <p>Send us your query anytime!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="contact_form_container">
+                            <div class="contact_form_title">
+                                <h3>Get In Touch</h3>
+                                <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+                            </div>
+                            <form class="contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label">Name <span class="required">*</span></label>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label">Email <span class="required">*</span></label>
+                                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Contact Number <span class="required">*</span></label>
+                                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Contact Number with Country Code" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Subject <span class="required">*</span></label>
+                                            <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter Subject" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Message <span class="required">*</span></label>
+                                            <textarea class="form-control" name="message" id="message" rows="6" placeholder="Enter your message here..." required></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 text-center">
+                                        <button type="submit" value="submit" class="btn submit_btn">
+                                            Send Message
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================Contact Area =================-->
+        
+        <!--================Footer Area =================-->
+        <footer class="footer_area p_120">
+        	<div class="container">
+        		<div class="row footer_inner">
+        			<div class="col-lg-5 col-sm-6">
+        				<aside class="f_widget ab_widget">
+        					<div class="f_title">
+        						<h3>About Nexus</h3>
+        					</div>
+        					<p>Empowering students worldwide with cutting-edge technology and personalized learning experiences. Join the future of education with Nexus Student Platform.</p>
+        					<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+        				</aside>
+        			</div>
+        			<div class="col-lg-5 col-sm-6">
+        				<aside class="f_widget news_widget">
+        					<div class="f_title">
+        						<h3>Newsletter</h3>
+        					</div>
+        					<p>Stay updated with our latest educational innovations and platform updates</p>
+        					<div id="mc_embed_signup">
+                                <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative">
+                                	<div class="input-group d-flex flex-row">
+                                        <input name="EMAIL" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
+                                        <button class="btn sub-btn"><span class="lnr lnr-arrow-right"></span></button>		
+                                    </div>				
+                                    <div class="mt-10 info"></div>
+                                </form>
+                            </div>
+        				</aside>
+        			</div>
+        			<div class="col-lg-2">
+        				<aside class="f_widget social_widget">
+        					<div class="f_title">
+        						<h3>Follow Us</h3>
+        					</div>
+        					<p>Connect with our community</p>
+        					<ul class="list">
+        						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+        						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+        						<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+        						<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+        					</ul>
+        				</aside>
+        			</div>
+        		</div>
+        	</div>
+        </footer>
+        <!--================End Footer Area =================-->
+        
+        <!--================Contact Success and Error message Area =================-->
+        <div id="success" class="modal modal-message fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="fa fa-close"></i>
+                        </button>
+                        <h2>Thank you!</h2>
+                        <p>Your message has been sent successfully. We'll get back to you soon!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modals error -->
+
+        <div id="error" class="modal modal-message fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="fa fa-close"></i>
+                        </button>
+                        <h2>Oops!</h2>
+                        <p>Something went wrong. Please try again later.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--================End Contact Success and Error message Area =================-->
+        
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/popper.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/stellar.js"></script>
+        <script src="vendors/lightbox/simpleLightbox.min.js"></script>
+        <script src="vendors/nice-select/js/jquery.nice-select.min.js"></script>
+        <script src="vendors/isotope/imagesloaded.pkgd.min.js"></script>
+        <script src="vendors/isotope/isotope-min.js"></script>
+        <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
+        <script src="js/jquery.ajaxchimp.min.js"></script>
+        <script src="js/mail-script.js"></script>
+        <script src="vendors/counter-up/jquery.waypoints.min.js"></script>
+        <script src="vendors/counter-up/jquery.counterup.min.js"></script>
+        <!-- contact js -->
+        <script src="js/jquery.form.js"></script>
+        <script src="js/jquery.validate.min.js"></script>
+        <script src="js/contact.js"></script>
+        <script src="js/theme.js"></script>
+        <script>
+            // Enhanced form interaction
+            $(document).ready(function() {
+                // Form submission animation
+                $('.submit_btn').on('click', function(e) {
+                    if ($('#contactForm')[0].checkValidity()) {
+                        $(this).addClass('loading');
+                        $(this).html('<i class="fa fa-spinner fa-spin"></i> Sending...');
+                    }
+                });
+                
+                // Basic form validation styling
+                $('.form-control').on('blur', function() {
+                    if ($(this).is(':invalid') && $(this).val()) {
+                        $(this).addClass('is-invalid');
+                    } else {
+                        $(this).removeClass('is-invalid');
+                    }
+                });
+                
+                $('.form-control').on('input', function() {
+                    $(this).removeClass('is-invalid');
+                });
+            });
+        </script>
+    </body>
+</html>
