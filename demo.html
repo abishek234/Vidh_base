@@ -4,7 +4,7 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" href="img/favicon.png" type="image/png">
+        <link rel="icon" href="img/Logo1.png" type="image/png">
         <title>Request Demo - Vidhyarthika - AI Integrated Student Management Platform</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.css">
@@ -18,8 +18,289 @@
         <!-- main css -->
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/responsive.css">
-    </head>
-    <body>
+        
+   <!-- Custom CSS for Popup Modal -->
+   <style>
+	.demo-modal {
+		display: none;
+		position: fixed;
+		z-index: 9999;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.7);
+		backdrop-filter: blur(5px);
+	}
+
+	.demo-modal-content {
+		background-color: #fff;
+		margin: 2% auto;
+		padding: 0;
+		border-radius: 15px;
+		width: 90%;
+		max-width: 600px;
+		max-height: 95vh;
+		overflow-y: auto;
+		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+		animation: modalSlideIn 0.3s ease-out;
+	}
+
+	@keyframes modalSlideIn {
+		from {
+			opacity: 0;
+			transform: translateY(-50px) scale(0.95);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+	}
+
+	.demo-modal-header {
+		background: linear-gradient(135deg, #4fa8e8 0%, #3b82f6 100%);
+		color: white;
+		padding: 25px 30px;
+		border-top-left-radius: 15px;
+		border-top-right-radius: 15px;
+		position: relative;
+	}
+
+	.demo-modal-header h3 {
+		margin: 0;
+		font-size: 24px;
+		font-weight: 600;
+	}
+
+	.demo-modal-header p {
+		margin: 8px 0 0 0;
+		opacity: 0.9;
+		font-size: 14px;
+	}
+
+	.close-modal {
+		position: absolute;
+		right: 20px;
+		top: 20px;
+		font-size: 28px;
+		font-weight: bold;
+		cursor: pointer;
+		background: rgba(255, 255, 255, 0.2);
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: all 0.3s ease;
+	}
+
+	.close-modal:hover {
+		background: rgba(255, 255, 255, 0.3);
+		transform: rotate(90deg);
+	}
+
+	.demo-modal-body {
+		padding: 30px;
+	}
+
+	.form-group {
+		margin-bottom: 20px;
+	}
+
+	.form-group label {
+		display: block;
+		margin-bottom: 8px;
+		font-weight: 600;
+		color: #333;
+		font-size: 14px;
+	}
+
+	.form-control {
+		width: 100%;
+		padding: 12px 15px;
+		border: 2px solid #e1e8ed;
+		border-radius: 8px;
+		font-size: 14px;
+		transition: all 0.3s ease;
+		background: #f8f9fa;
+		box-sizing: border-box;
+		height: 48px;
+		appearance: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+	}
+
+	.form-control:focus {
+		outline: none;
+		border-color: #4fa8e8;
+		background: #fff;
+		box-shadow: 0 0 0 3px rgba(79, 168, 232, 0.1);
+	}
+
+	/* Special styling for select dropdowns */
+	select.form-control {
+		background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+		background-repeat: no-repeat;
+		background-position: right 12px center;
+		background-size: 16px;
+		padding-right: 40px;
+	}
+
+	/* Textarea specific styling */
+	textarea.form-control {
+		height: auto;
+		min-height: 100px;
+		resize: vertical;
+		padding-top: 12px;
+		padding-bottom: 12px;
+	}
+
+	/* Input type date styling */
+	input[type="date"].form-control {
+		position: relative;
+	}
+
+	input[type="date"].form-control::-webkit-calendar-picker-indicator {
+		position: absolute;
+		right: 12px;
+		color: #666;
+		cursor: pointer;
+	}
+
+	.form-row {
+		display: flex;
+		gap: 15px;
+	}
+
+	.form-row .form-group {
+		flex: 1;
+	}
+
+	.submit-btn {
+		background: linear-gradient(135deg, #4fa8e8 0%, #3b82f6 100%);
+		color: white;
+		padding: 15px 30px;
+		border: none;
+		border-radius: 8px;
+		font-size: 16px;
+		font-weight: 600;
+		cursor: pointer;
+		width: 100%;
+		transition: all 0.3s ease;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.submit-btn:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 10px 25px rgba(79, 168, 232, 0.3);
+		background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+	}
+
+	.submit-btn:disabled {
+		opacity: 0.7;
+		cursor: not-allowed;
+		transform: none;
+	}
+
+	.loading-spinner {
+		display: none;
+		width: 20px;
+		height: 20px;
+		border: 2px solid #ffffff;
+		border-top: 2px solid transparent;
+		border-radius: 50%;
+		animation: spin 1s linear infinite;
+		margin-right: 10px;
+	}
+
+	@keyframes spin {
+		0% { transform: rotate(0deg); }
+		100% { transform: rotate(360deg); }
+	}
+
+	.success-message, .error-message {
+		padding: 15px;
+		border-radius: 8px;
+		margin-bottom: 20px;
+		display: none;
+		font-weight: 500;
+	}
+
+	.success-message {
+		background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+		color: #166534;
+		border: 1px solid #86efac;
+	}
+
+	.error-message {
+		background: linear-gradient(135deg, #fef2f2 0%, #fecaca 100%);
+		color: #991b1b;
+		border: 1px solid #fca5a5;
+	}
+
+	.required {
+		color: #ef4444;
+	}
+
+	.demo-features {
+		background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+		padding: 20px;
+		border-radius: 10px;
+		margin-bottom: 25px;
+		border: 1px solid #b3d9ff;
+	}
+
+	.demo-features h4 {
+		color: #1e40af;
+		margin-bottom: 15px;
+		font-size: 18px;
+	}
+
+	.demo-features ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.demo-features li {
+		padding: 8px 0;
+		border-bottom: 1px solid #e9ecef;
+		position: relative;
+		padding-left: 25px;
+	}
+
+	.demo-features li:before {
+		content: "✓";
+		position: absolute;
+		left: 0;
+		color: #3b82f6;
+		font-weight: bold;
+	}
+
+	.demo-features li:last-child {
+		border-bottom: none;
+	}
+
+	@media (max-width: 768px) {
+		.demo-modal-content {
+			width: 95%;
+			margin: 5% auto;
+		}
+
+		.demo-modal-header, .demo-modal-body {
+			padding: 20px;
+		}
+
+		.form-row {
+			flex-direction: column;
+			gap: 0;
+		}
+	}
+</style>
+</head>
+<body>
         
         <!--================Header Menu Area =================-->
         <header class="header_area">
@@ -58,7 +339,7 @@
 								<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
-								<li class="nav-item"><a href="#" class="tickets_btn">Request Demo</a></li>
+								<li class="nav-item"><a href="#" class="tickets_btn demo-trigger">Request Demo</a></li>
 							</ul>
 						</div> 
 					</div>
@@ -95,7 +376,7 @@
 								<h6>See how AI transforms school management</h6>
 								<p>Discover how Vidhyarthika's AI-integrated platform can revolutionize your school's operations. Our comprehensive demo will showcase voice-controlled grading, single-click attendance, geofencing teacher tracking, and intelligent fee management in real-time.</p>
 								<p>Whether you're an administrator looking to streamline operations, a teacher seeking efficient tools, or a school leader planning digital transformation, our personalized demo will show exactly how Vidhyarthika can benefit your institution.</p>
-								<a class="main_btn" href="#demo-form">Schedule Your Demo</a>
+								<a class="main_btn demo-trigger" href="#">Schedule Your Demo</a>
 							</div>
 						</div>
 						<div class="col-lg-6">
@@ -108,45 +389,63 @@
         	</div>
         </section>
         <!--================End Demo Introduction Area =================-->
-<!--================Demo Video Section =================-->
-<section class="made_life_area p_120" style="background: #fff;">
-    <div class="container">
-        <div class="made_life_inner">
-            <div class="row made_life_text align-items-center">
-                <div class="col-lg-6">
-                    <div class="left_side_text">
-                        <h3>Watch Vidhyarthika <br />Demo Video</h3>
-                        <h6>See our AI-powered platform in action</h6>
-                        <p>Experience the revolutionary features of Vidhyarthika through our comprehensive demo video. Watch how voice-controlled grading, single-click attendance, geofencing technology, and AI fee management transform school operations.</p>
-                        <p>Get a complete overview of our platform's capabilities and see why hundreds of schools have chosen Vidhyarthika for their digital transformation journey.</p>
-                        <a class="main_btn" href="https://drive.google.com/file/d/10mBtyai98UE9IE7ZIjCyvQ_BOHgn_IL6/view?usp=sharing" target="_blank">
-                            <i class="fa fa-play-circle" style="margin-right: 10px; font-size: 18px;"></i>Watch Demo Video
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="chart_img text-center">
-                        <div style="background: #f8f9fa; padding: 60px 40px; border-radius: 10px; position: relative;">
-                            <!-- Large triangular play button -->
-                            <div style="width: 0; height: 0; border-left: 40px solid #333; border-top: 25px solid transparent; border-bottom: 25px solid transparent; margin: 0 auto 30px auto; cursor: pointer;" onclick="window.open('https://drive.google.com/file/d/10mBtyai98UE9IE7ZIjCyvQ_BOHgn_IL6/view?usp=sharing', '_blank')"></div>
-                            
-                            <h4 style="color: #333; margin-bottom: 20px; font-weight: 600; font-size: 24px;">Interactive Demo Video</h4>
-                            <p style="color: #666; line-height: 1.6; margin-bottom: 30px; font-size: 16px;">Click to watch our comprehensive platform demonstration featuring all key features and real-world usage scenarios.</p>
-                            
-                            <!-- Feature tags in a row with circles -->
-                            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                                <span style="color: #333; font-size: 16px; font-weight: 500; border: 2px solid #333; border-radius: 50px; padding: 8px 20px; background: transparent;">Voice Grading</span>
-                                <span style="color: #333; font-size: 16px; font-weight: 500; border: 2px solid #333; border-radius: 50px; padding: 8px 20px; background: transparent;">Smart Attendance</span>
-                                <span style="color: #333; font-size: 16px; font-weight: 500; border: 2px solid #333; border-radius: 50px; padding: 8px 20px; background: transparent;">AI Features</span>
+
+        <!--================Demo Video Section =================-->
+		<section class="made_life_area p_120" style="background: #fff;">
+            <div class="container">
+                <div class="made_life_inner">
+                    <div class="row made_life_text align-items-center">
+                        <div class="col-lg-6">
+                            <div class="left_side_text">
+                                <h3>Watch Vidhyarthika <br />Demo Video</h3>
+                                <h6>See our AI-powered platform in action</h6>
+                                <p>Experience the revolutionary features of Vidhyarthika through our comprehensive demo video. Watch how voice-controlled grading, single-click attendance, geofencing technology, and AI fee management transform school operations.</p>
+                                <p>Get a complete overview of our platform's capabilities and see why hundreds of schools have chosen Vidhyarthika for their digital transformation journey.</p>
+                                <a class="main_btn" href="https://drive.google.com/file/d/10mBtyai98UE9IE7ZIjCyvQ_BOHgn_IL6/view?usp=sharing" target="_blank">
+                                    <i class="fa fa-play-circle" style="margin-right: 10px; font-size: 18px;"></i>Watch Demo Video
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="chart_img text-center">
+                                <div style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); cursor: pointer;" onclick="window.open('https://drive.google.com/file/d/10mBtyai98UE9IE7ZIjCyvQ_BOHgn_IL6/view?usp=sharing', '_blank')">
+                                    <!-- Video Thumbnail Image -->
+                                    <img src="img/Video.jpg" alt="Vidhyarthika Demo Video" style="width: 100%; height: auto; display: block;">
+                                    
+                                    <!-- Play Button Overlay -->
+                                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.7); border-radius: 50%; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(0,0,0,0.9)'; this.style.transform='translate(-50%, -50%) scale(1.1)'" onmouseout="this.style.background='rgba(0,0,0,0.7)'; this.style.transform='translate(-50%, -50%) scale(1)'">
+                                        <div style="width: 0; height: 0; border-left: 25px solid #fff; border-top: 15px solid transparent; border-bottom: 15px solid transparent; margin-left: 5px;"></div>
+                                    </div>
+                                    
+                                    <!-- Video Duration Badge -->
+                                    <div style="position: absolute; bottom: 15px; right: 15px; background: rgba(0,0,0,0.8); color: white; padding: 5px 10px; border-radius: 5px; font-size: 12px; font-weight: 600;">
+                                        Demo Video
+                                    </div>
+                                    
+                                    <!-- Hover Overlay -->
+                                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(79, 168, 232, 0.1), rgba(59, 130, 246, 0.1)); opacity: 0; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'"></div>
+                                </div>
+                                
+                                <!-- Below Image Content -->
+                                <div style="padding: 25px 0;">
+                                    <h4 style="color: #333; margin-bottom: 15px; font-weight: 600; font-size: 22px;">Interactive Demo Video</h4>
+                                    <p style="color: #666; line-height: 1.6; margin-bottom: 25px; font-size: 15px;">Click to watch our comprehensive platform demonstration featuring all key features and real-world usage scenarios.</p>
+                                    
+                                    <!-- Feature tags in a row with circles -->
+                                    <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                                        <span style="color: #4fa8e8; font-size: 14px; font-weight: 500; border: 2px solid #4fa8e8; border-radius: 25px; padding: 6px 16px; background: transparent; transition: all 0.3s ease;" onmouseover="this.style.background='#4fa8e8'; this.style.color='white'" onmouseout="this.style.background='transparent'; this.style.color='#4fa8e8'">Voice Grading</span>
+                                        <span style="color: #4fa8e8; font-size: 14px; font-weight: 500; border: 2px solid #4fa8e8; border-radius: 25px; padding: 6px 16px; background: transparent; transition: all 0.3s ease;" onmouseover="this.style.background='#4fa8e8'; this.style.color='white'" onmouseout="this.style.background='transparent'; this.style.color='#4fa8e8'">Smart Attendance</span>
+                                        <span style="color: #4fa8e8; font-size: 14px; font-weight: 500; border: 2px solid #4fa8e8; border-radius: 25px; padding: 6px 16px; background: transparent; transition: all 0.3s ease;" onmouseover="this.style.background='#4fa8e8'; this.style.color='white'" onmouseout="this.style.background='transparent'; this.style.color='#4fa8e8'">AI Features</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-<!--================End Demo Video Section =================-->
+        </section>
+        <!--================End Demo Video Section =================-->
+
         <!--================Demo Benefits Area =================-->
         <section class="work_area p_120">
         	<div class="container">
@@ -202,110 +501,34 @@
         </section>
         <!--================End Demo Benefits Area =================-->
         
-		        <!--================Demo Form Area =================-->
-				<section class="made_life_area p_120">
-					<div class="container">
-						<div class="made_life_inner">
-							<div class="row made_life_text">
-								<div class="col-lg-6">
-									<div class="left_side_text">
-										<h3>Personal On-Site <br />Demonstration</h3>
-										<h6>Our experts visit your school for a tailored demo</h6>
-										<p>Our experienced team members will visit your school to provide a comprehensive, hands-on demonstration of Vidhyarthika's features. This personalized approach ensures that you see exactly how our platform can address your school's specific needs and challenges.</p>
-										<p><strong>• Personalized Visit:</strong> Our team comes to your school at your convenience<br/>
-										<strong>• Live Feature Demo:</strong> Experience voice grading, attendance, and AI features firsthand<br/>
-										<strong>• Custom Configuration:</strong> See the platform configured for your school's structure<br/>
-										<strong>• Q&A Session:</strong> Direct interaction with our product experts<br/>
-										<strong>• Implementation Planning:</strong> Discuss rollout timeline and training needs</p>
-										<a class="main_btn" href="#demo-form">Schedule School Visit</a>
-									</div>
-								</div>
-								<div class="col-lg-6">
-									<div class="chart_img">
-										<img class="img-fluid" src="img/dashboard.png" alt="On-Site Demo">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				<!--================End Demo Form Area =================-->
-				
-        <!--================Testimonials Area =================-->
-        <!-- <section class="testimonials_area p_120">
-        	<div class="container">
-        		<div class="main_title">
-        			<h2>What Schools Say After Their Demo</h2>
-        			<p>Hear from educators who experienced Vidhyarthika's transformative capabilities firsthand.</p>
-        		</div>
-        		<div class="testi_slider owl-carousel">
-        			<div class="item">
-        				<div class="testi_item">
-							<div class="media">
-								<div class="d-flex">
-									<img src="img/testimonials/testi-1.png" alt="">
-								</div>
-								<div class="media-body">
-									<p>The demo completely changed our perspective on school management. The voice grading system seemed magical, and we could immediately see how it would save hours of our teachers' time every week.</p>
-									<h4>Dr. Priya Sharma</h4>
-									<span>Principal, Green Valley School</span>
-									<div class="rating">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-									</div>
-								</div>
-							</div>
-        				</div>
-        			</div>
-        			<div class="item">
-        				<div class="testi_item">
-							<div class="media">
-								<div class="d-flex">
-									<img src="img/testimonials/testi-2.png" alt="">
-								</div>
-								<div class="media-body">
-									<p>Within 10 minutes of the demo, I knew this was exactly what our school needed. The offline functionality sold us immediately since our internet connectivity can be unreliable.</p>
-									<h4>Rajesh Kumar</h4>
-									<span>Administrator, Chennai Public School</span>
-									<div class="rating">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-									</div>
-								</div>
-							</div>
-        				</div>
-        			</div>
-        			<div class="item">
-        				<div class="testi_item">
-							<div class="media">
-								<div class="d-flex">
-									<img src="img/testimonials/testi-1.png" alt="">
-								</div>
-								<div class="media-body">
-									<p>The Tamil language support demonstration was impressive. Finally, a platform that understands the needs of regional schools like ours. Our teachers were excited to see technology in their native language.</p>
-									<h4>Mrs. Lakshmi Devi</h4>
-									<span>Vice Principal, Rural Excellence Academy</span>
-									<div class="rating">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-									</div>
-								</div>
-							</div>
-        				</div>
-        			</div>
-        		</div>
-        	</div>
-        </section> -->
-        <!--================End Testimonials Area =================-->
+        <!--================Demo Form Area =================-->
+        <section class="made_life_area p_120">
+            <div class="container">
+                <div class="made_life_inner">
+                    <div class="row made_life_text">
+                        <div class="col-lg-6">
+                            <div class="left_side_text">
+                                <h3>Personal On-Site <br />Demonstration</h3>
+                                <h6>Our experts visit your school for a tailored demo</h6>
+                                <p>Our experienced team members will visit your school to provide a comprehensive, hands-on demonstration of Vidhyarthika's features. This personalized approach ensures that you see exactly how our platform can address your school's specific needs and challenges.</p>
+                                <p><strong>• Personalized Visit:</strong> Our team comes to your school at your convenience<br/>
+                                <strong>• Live Feature Demo:</strong> Experience voice grading, attendance, and AI features firsthand<br/>
+                                <strong>• Custom Configuration:</strong> See the platform configured for your school's structure<br/>
+                                <strong>• Q&A Session:</strong> Direct interaction with our product experts<br/>
+                                <strong>• Implementation Planning:</strong> Discuss rollout timeline and training needs</p>
+                                <a class="main_btn demo-trigger" href="#">Schedule School Visit</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="chart_img">
+                                <img class="img-fluid" src="img/dashboard.png" alt="On-Site Demo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================End Demo Form Area =================-->
         
         <!--================Next Steps Area =================-->
         <section class="made_life_area made_white p_120">
@@ -327,7 +550,7 @@
 								<strong>Training Schedule:</strong> Comprehensive staff training and onboarding<br/>
 								<strong>Data Migration Support:</strong> Seamless transfer from existing systems<br/>
 								<strong>Ongoing Support:</strong> Dedicated account manager and technical assistance</p>
-								<a class="main_btn" href="#demo-form">Start Your Journey</a>
+								<a class="main_btn demo-trigger" href="#">Start Your Journey</a>
 							</div>
 						</div>
 					</div>
@@ -342,11 +565,127 @@
         		<div class="impress_inner">
 					<h2>Ready to Transform Your School Management?</h2>
 					<p>Don't wait to experience the future of educational administration. Schedule your free demo today and see how Vidhyarthika can revolutionize your school's operations while enhancing the learning experience for everyone.</p>
-					<a class="banner_btn2" href="#demo-form">Schedule Free Demo Now</a>
+					<a class="banner_btn2 demo-trigger" href="#">Schedule Free Demo Now</a>
         		</div>
         	</div>
         </section>
         <!--================End CTA Area =================-->
+
+        <!--================Demo Request Modal =================-->
+        <div id="demoModal" class="demo-modal">
+            <div class="demo-modal-content">
+                <div class="demo-modal-header">
+                    <h3>Schedule Your Free Demo</h3>
+                    <p>Get personalized demonstration of Vidhyarthika's AI-powered features</p>
+                    <span class="close-modal">&times;</span>
+                </div>
+                <div class="demo-modal-body">
+                    <div class="success-message" id="successMessage">
+                        <strong>Thank you!</strong> Your demo request has been submitted successfully. Our team will contact you within 24 hours to schedule your personalized demonstration.
+                    </div>
+                    <div class="error-message" id="errorMessage">
+                        <strong>Oops!</strong> There was an error submitting your request. Please try again or contact us directly.
+                    </div>
+                    
+                    <div class="demo-features">
+                        <h4>What You'll Experience:</h4>
+                        <ul>
+                            <li>Voice-controlled grading and AI attendance system</li>
+                            <li>Geofencing teacher tracking and offline functionality</li>
+                            <li>Parent communication and fee management modules</li>
+                            <li>Custom configuration for your school's needs</li>
+                        </ul>
+                    </div>
+
+                    <form id="demoRequestForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name <span class="required">*</span></label>
+                                <input type="text" id="firstName" name="firstName" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name <span class="required">*</span></label>
+                                <input type="text" id="lastName" name="lastName" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="schoolName">School Name <span class="required">*</span></label>
+                            <input type="text" id="schoolName" name="schoolName" class="form-control" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="designation">Your Designation <span class="required">*</span></label>
+                                <select id="designation" name="designation" class="form-control" required>
+                                    <option value="">Select Your Role</option>
+                                    <option value="Principal">Principal</option>
+                                    <option value="Vice Principal">Vice Principal</option>
+                                    <option value="Administrator">Administrator</option>
+                                    <option value="IT Head">IT Head</option>
+                                    <option value="Teacher">Teacher</option>
+                                    <option value="School Owner">School Owner</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="studentCount">Number of Students</label>
+                                <select id="studentCount" name="studentCount" class="form-control">
+                                    <option value="">Select Range</option>
+                                    <option value="1-100">1-100 Students</option>
+                                    <option value="101-300">101-300 Students</option>
+                                    <option value="301-500">301-500 Students</option>
+                                    <option value="501-1000">501-1000 Students</option>
+                                    <option value="1000+">1000+ Students</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="currentSystem">Current Management System (if any)</label>
+                            <input type="text" id="currentSystem" name="currentSystem" class="form-control" placeholder="e.g. Manual records, Excel sheets, or specific software name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preferredDate">Preferred Demo Date</label>
+                            <input type="date" id="preferredDate" name="preferredDate" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preferredTime">Preferred Time</label>
+                            <select id="preferredTime" name="preferredTime" class="form-control">
+                                <option value="">Select Time Slot</option>
+                                <option value="9:00 AM - 11:00 AM">9:00 AM - 11:00 AM</option>
+                                <option value="11:00 AM - 1:00 PM">11:00 AM - 1:00 PM</option>
+                                <option value="2:00 PM - 4:00 PM">2:00 PM - 4:00 PM</option>
+                                <option value="4:00 PM - 6:00 PM">4:00 PM - 6:00 PM</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="specificRequirements">Specific Requirements or Questions</label>
+                            <textarea id="specificRequirements" name="specificRequirements" class="form-control" rows="4" placeholder="Tell us about any specific features you're interested in or challenges you'd like to address..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            <span class="loading-spinner" id="loadingSpinner"></span>
+                            <span id="submitText">Schedule My Demo</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--================End Demo Request Modal =================-->
         
         <!--================Footer Area =================-->
         <footer class="footer_area p_120">
@@ -358,7 +697,7 @@
         						<h3>About Vidhyarthika</h3>
         					</div>
         					<p>Vidhyarthika is an innovative AI-integrated student management platform designed to revolutionize school administration with cutting-edge features like voice-controlled grading, smart attendance tracking, and comprehensive offline functionality.</p>
-        					<p>Founded by Abishek, our mission is to empower educational institutions with technology that enhances learning experiences while simplifying administrative tasks.</p>
+        					<p>Our mission is to empower educational institutions with technology that enhances learning experiences while simplifying administrative tasks.</p>
         				</aside>
         			</div>
         			<div class="col-lg-4 col-sm-6">
@@ -391,8 +730,8 @@
         						<li><a href="#"><i class="fa fa-instagram"></i></a></li>
         					</ul>
         					<div class="mt-3">
-        						<p><strong>Email:</strong> hello@vidhyarthika.com</p>
-        						<p><strong>Phone:</strong> +91-9876543210</p>
+        						<p><strong>Email:</strong> abishek@vidhyarthika.in</p>
+        						<p><strong>Phone:</strong> +91-7708154360</p>
         					</div>
         				</aside>
         			</div>
@@ -400,6 +739,9 @@
         	</div>
         </footer>
         <!--================End Footer Area =================-->
+        
+        <!-- EmailJS CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
         
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -420,5 +762,192 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
         <script src="js/gmaps.min.js"></script>
         <script src="js/theme.js"></script>
+
+        <!-- Demo Modal JavaScript -->
+        <script>
+            // Initialize EmailJS (Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key)
+            emailjs.init('3MfPpBo6mNW0NHAn9');
+
+            // Modal elements
+            const modal = document.getElementById('demoModal');
+            const closeModal = document.querySelector('.close-modal');
+            const demoTriggers = document.querySelectorAll('.demo-trigger');
+            const form = document.getElementById('demoRequestForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const submitText = document.getElementById('submitText');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Set minimum date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('preferredDate').setAttribute('min', today);
+
+            // Open modal when demo buttons are clicked
+            demoTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                });
+            });
+
+            // Close modal when X is clicked
+            closeModal.addEventListener('click', function() {
+                closeModalFunction();
+            });
+
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModalFunction();
+                }
+            });
+
+            // Close modal function
+            function closeModalFunction() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Restore background scrolling
+                resetForm();
+            }
+
+            // Reset form function
+            function resetForm() {
+                form.reset();
+                successMessage.style.display = 'none';
+                errorMessage.style.display = 'none';
+                submitBtn.disabled = false;
+                loadingSpinner.style.display = 'none';
+                submitText.textContent = 'Schedule My Demo';
+            }
+
+            // Form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show loading state
+                submitBtn.disabled = true;
+                loadingSpinner.style.display = 'inline-block';
+                submitText.textContent = 'Sending...';
+                
+                // Hide previous messages
+                successMessage.style.display = 'none';
+                errorMessage.style.display = 'none';
+
+                // Collect form data
+                const formData = new FormData(form);
+                
+                // Format the message content according to your EmailJS template
+                const messageContent = `Demo Request Details:
+
+Contact Information:
+- Name: ${formData.get('firstName')} ${formData.get('lastName')}
+- Email: ${formData.get('email')}
+- Phone: ${formData.get('phone')}
+
+School Information:
+- School Name: ${formData.get('schoolName')}
+- Designation: ${formData.get('designation')}
+- Number of Students: ${formData.get('studentCount') || 'Not specified'}
+- Current System: ${formData.get('currentSystem') || 'Not specified'}
+
+Demo Preferences:
+- Preferred Date: ${formData.get('preferredDate') || 'Not specified'}
+- Preferred Time: ${formData.get('preferredTime') || 'Not specified'}
+
+Additional Requirements:
+${formData.get('specificRequirements') || 'None specified'}
+
+---
+This is an automated demo request from the Vidhyarthika website.`;
+
+                // Template parameters matching your EmailJS template
+                const templateParams = {
+                    from_name: formData.get('firstName') + ' ' + formData.get('lastName'),
+                    from_email: formData.get('email'),
+                    phone: formData.get('phone'),
+                    subject: `Demo Request from ${formData.get('schoolName')} - ${formData.get('firstName')} ${formData.get('lastName')}`,
+                    message: messageContent
+                };
+
+                // Send email using EmailJS
+                emailjs.send(
+                    'service_qmbt1bl', // Replace with your EmailJS service ID
+                    'template_a42qwgh', // Replace with your EmailJS template ID
+                    templateParams
+                ).then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    
+                    // Show success message
+                    successMessage.style.display = 'block';
+                    form.style.display = 'none';
+                    
+                    // Auto close modal after 3 seconds
+                    setTimeout(function() {
+                        closeModalFunction();
+                        form.style.display = 'block';
+                    }, 3000);
+                    
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    
+                    // Show error message
+                    errorMessage.style.display = 'block';
+                    
+                    // Reset button state
+                    submitBtn.disabled = false;
+                    loadingSpinner.style.display = 'none';
+                    submitText.textContent = 'Schedule My Demo';
+                });
+            });
+
+            // Form validation enhancements
+            const inputs = form.querySelectorAll('input[required], select[required]');
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    if (this.value.trim() === '') {
+                        this.style.borderColor = '#ef4444';
+                    } else {
+                        this.style.borderColor = '#3b82f6';
+                    }
+                });
+
+                input.addEventListener('input', function() {
+                    if (this.style.borderColor === 'rgb(239, 68, 68)') {
+                        this.style.borderColor = '#e1e8ed';
+                    }
+                });
+            });
+
+            // Email validation
+            document.getElementById('email').addEventListener('input', function() {
+                const email = this.value;
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                
+                if (email && !emailRegex.test(email)) {
+                    this.style.borderColor = '#ef4444';
+                } else if (email) {
+                    this.style.borderColor = '#3b82f6';
+                }
+            });
+
+            // Phone validation
+            document.getElementById('phone').addEventListener('input', function() {
+                const phone = this.value.replace(/\D/g, ''); // Remove non-digits
+                
+                if (phone.length >= 10) {
+                    this.style.borderColor = '#3b82f6';
+                } else if (phone.length > 0) {
+                    this.style.borderColor = '#ef4444';
+                }
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    closeModalFunction();
+                }
+            });
+        </script>
     </body>
 </html>
