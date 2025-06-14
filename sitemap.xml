@@ -6,62 +6,60 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-
 <url>
   <loc>https://vidhyarthika.in/</loc>
-  <lastmod>2025-06-10T03:51:19+00:00</lastmod>
+  <lastmod>2025-06-14T04:39:12+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://vidhyarthika.in/index.html</loc>
-  <lastmod>2025-06-10T03:51:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
   <loc>https://vidhyarthika.in/about-us.html</loc>
-  <lastmod>2025-06-10T03:51:18+00:00</lastmod>
+  <lastmod>2025-06-14T04:39:11+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vidhyarthika.in/features.html</loc>
-  <lastmod>2025-06-10T03:51:18+00:00</lastmod>
+  <lastmod>2025-06-14T04:39:11+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vidhyarthika.in/admin-portal.html</loc>
-  <lastmod>2025-06-10T03:51:18+00:00</lastmod>
+  <lastmod>2025-06-14T04:39:11+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vidhyarthika.in/teacher-portal.html</loc>
-  <lastmod>2025-06-10T03:51:20+00:00</lastmod>
+  <lastmod>2025-06-14T04:39:12+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vidhyarthika.in/student-portal.html</loc>
-  <lastmod>2025-06-10T03:51:20+00:00</lastmod>
+  <lastmod>2025-06-14T04:39:12+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vidhyarthika.in/parent-portal.html</loc>
-  <lastmod>2025-06-10T03:51:20+00:00</lastmod>
+  <lastmod>2025-06-14T04:39:12+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vidhyarthika.in/price.html</loc>
-  <lastmod>2025-06-10T03:51:20+00:00</lastmod>
+  <lastmod>2025-06-14T04:39:12+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vidhyarthika.in/demo.html</loc>
-  <lastmod>2025-06-10T03:51:18+00:00</lastmod>
+  <lastmod>2025-06-14T04:39:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://vidhyarthika.in/faq.html</loc>
+  <lastmod>2025-06-14T04:39:11+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vidhyarthika.in/contact.html</loc>
-  <lastmod>2025-06-10T03:51:18+00:00</lastmod>
+  <lastmod>2025-06-14T04:39:11+00:00</lastmod>
   <priority>0.80</priority>
 </url>
-
 
 </urlset>
